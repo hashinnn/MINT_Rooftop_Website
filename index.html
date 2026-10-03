@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINT Rooftop Playground</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="#home" class="logo">MINT<span>ROOFTOP</span></a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#activities">Activities</a>
+      <a href="#events">Events</a>
+      <a href="#community">Community</a>
+      <a href="#create">Create</a>
+    </nav>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">MINT Museum of Toys</p>
+        <h1>Your interests.<br><span>Your people.</span><br>Your rooftop.</h1>
+        <p class="hero-text">
+          A flexible youth space where you can play, create, meet people
+          and turn your interests into something the community can share.
+        </p>
+        <div class="hero-buttons">
+          <a href="#activities" class="btn primary">Explore activities</a>
+          <a href="#events" class="btn secondary">See what's happening</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="toy-icon">🧸</div>
+        <p>WHAT'S HAPPENING TODAY?</p>
+        <h3>Retro Game Night</h3>
+        <span>Tonight · 7:00 PM</span>
+        <button onclick="showToast('You joined Retro Game Night!')">Join event →</button>
+      </div>
+    </section>
+
+    <section class="intro">
+      <p class="eyebrow">ONE ROOFTOP. MANY INTERESTS.</p>
+      <h2>Come for what you love.<br>Stay for the community.</h2>
+      <p>
+        Discover activities based on what you enjoy, meet other young people
+        with similar interests and share what you create.
+      </p>
+    </section>
+
+    <section id="activities" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / DISCOVER</p>
+          <h2>Find your thing.</h2>
+        </div>
+        <p>Pick an interest and discover activities happening on the rooftop.</p>
+      </div>
+
+      <div class="interest-buttons">
+        <button class="interest active" onclick="filterActivities('all', this)">All</button>
+        <button class="interest" onclick="filterActivities('play', this)">🎮 Play</button>
+        <button class="interest" onclick="filterActivities('create', this)">🎨 Create</button>
+        <button class="interest" onclick="filterActivities('make', this)">🛠 Make</button>
+        <button class="interest" onclick="filterActivities('collect', this)">🧸 Collect</button>
+      </div>
+
+      <div class="activity-grid" id="activityGrid">
+        <article class="activity-card" data-type="play">
+          <div class="card-icon">🎮</div>
+          <span class="tag">PLAY</span>
+          <h3>Retro Game Night</h3>
+          <p>Challenge other players with classic games and discover new favourites.</p>
+          <button onclick="showToast('Opening Retro Game Night')">View activity →</button>
+        </article>
+
+        <article class="activity-card" data-type="create">
+          <div class="card-icon">🎨</div>
+          <span class="tag">CREATE</span>
+          <h3>Toy Customisation</h3>
+          <p>Bring a toy to life with your own colours, characters and ideas.</p>
+          <button onclick="showToast('Opening Toy Customisation')">View activity →</button>
+        </article>
+
+        <article class="activity-card" data-type="make">
+          <div class="card-icon">🛠</div>
+          <span class="tag">MAKE</span>
+          <h3>Mini Makers Lab</h3>
+          <p>Build, prototype and experiment with hands-on creative projects.</p>
+          <button onclick="showToast('Opening Mini Makers Lab')">View activity →</button>
+        </article>
+
+        <article class="activity-card" data-type="collect">
+          <div class="card-icon">🧸</div>
+          <span class="tag">COLLECT</span>
+          <h3>Collector's Corner</h3>
+          <p>Meet collectors, swap stories and showcase the things you love.</p>
+          <button onclick="showToast('Opening Collector’s Corner')">View activity →</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="interest-section">
+      <div>
+        <p class="eyebrow">PERSONALISED DISCOVERY</p>
+        <h2>Tell us what you're into.</h2>
+        <p>Choose your interests and we'll suggest activities and events that match.</p>
+      </div>
+
+      <div class="interest-panel">
+        <h3>I'm interested in...</h3>
+        <label><input type="checkbox" value="Gaming"> Gaming</label>
+        <label><input type="checkbox" value="Art"> Art & Design</label>
+        <label><input type="checkbox" value="Making"> Making & Building</label>
+        <label><input type="checkbox" value="Toys"> Toys & Collecting</label>
+        <label><input type="checkbox" value="Social"> Meeting people</label>
+        <button class="btn primary" onclick="saveInterests()">Show my recommendations</button>
+        <p id="recommendation" class="recommendation"></p>
+      </div>
+    </section>
+
+    <section id="events" class="section events">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">02 / EVENTS</p>
+          <h2>What's happening?</h2>
+        </div>
+        <p>Drop in, join a workshop or bring your friends.</p>
+      </div>
+
+      <div class="event-list">
+        <div class="event-row">
+          <div class="date"><strong>03</strong><span>OCT</span></div>
+          <div><span class="tag">PLAY</span><h3>Retro Game Night</h3><p>7:00 PM · Rooftop Play Zone</p></div>
+          <button onclick="showToast('You joined Retro Game Night!')">Join →</button>
+        </div>
+        <div class="event-row">
+          <div class="date"><strong>08</strong><span>OCT</span></div>
+          <div><span class="tag">CREATE</span><h3>Custom Toy Workshop</h3><p>2:00 PM · Create Zone</p></div>
+          <button onclick="showToast('You joined Custom Toy Workshop!')">Join →</button>
+        </div>
+        <div class="event-row">
+          <div class="date"><strong>15</strong><span>OCT</span></div>
+          <div><span class="tag">MAKE</span><h3>Build Something Saturday</h3><p>1:00 PM · Maker Zone</p></div>
+          <button onclick="showToast('You joined Build Something Saturday!')">Join →</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="community" class="community">
+      <div class="community-header">
+        <div>
+          <p class="eyebrow">03 / COMMUNITY</p>
+          <h2>See what people are making.</h2>
+        </div>
+        <button class="btn secondary" onclick="document.getElementById('create').scrollIntoView({behavior:'smooth'})">Share yours</button>
+      </div>
+
+      <div class="community-grid">
+        <article class="post post-large"><div class="post-image pink">🧸</div><div class="post-content"><span>@sarah</span><h3>My custom vintage toy!</h3><p>Spent the afternoon in the Create Zone.</p></div></article>
+        <article class="post"><div class="post-image blue">🎮</div><div class="post-content"><span>@jason</span><h3>Retro tournament</h3><p>Who wants to join?</p></div></article>
+        <article class="post"><div class="post-image yellow">🧩</div><div class="post-content"><span>@alicia</span><h3>New puzzle design</h3><p>Looking for testers!</p></div></article>
+      </div>
+    </section>
+
+    <section id="create" class="create-section">
+      <div>
+        <p class="eyebrow">04 / SHARE</p>
+        <h2>Made something?<br>Put it on the wall.</h2>
+        <p>
+          Share your project with the rooftop community. Your creations can
+          inspire the next person who walks through the door.
+        </p>
+      </div>
+      <form onsubmit="submitPost(event)" class="share-form">
+        <input id="name" type="text" placeholder="Your name" required>
+        <input id="project" type="text" placeholder="What did you make?" required>
+        <textarea id="description" placeholder="Tell the community about it..." required></textarea>
+        <button class="btn primary" type="submit">Share with community →</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="logo">MINT<span>ROOFTOP</span></div>
+    <p>A youth space for interests, creativity and community.</p>
+    <p>Prototype concept · MINT Museum of Toys</p>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
